@@ -185,7 +185,7 @@ public class Crawler implements Runnable {
 					 cash=cash/parseData.getOutgoingUrls().size();
 					 url.setCash(url.getCash()+cash);
 					 if(url.getDepth()<=maxDepth)
-						 
+						 //从当前页面中发现的页面如果需要抓取
 					 if(shouldVisit(page, url))
 					 {
 						

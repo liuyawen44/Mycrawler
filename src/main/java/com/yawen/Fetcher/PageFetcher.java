@@ -54,8 +54,8 @@ public class PageFetcher extends Configurable {
 
 		// 设置连接参数
 		RequestConfig requestConfig = RequestConfig.custom().setExpectContinueEnabled(false)
-				.setCookieSpec(CookieSpecs.STANDARD).setRedirectsEnabled(false).setSocketTimeout(5000)
-				.setConnectTimeout(5000).build();
+				.setCookieSpec(CookieSpecs.STANDARD).setRedirectsEnabled(false).setSocketTimeout(config.getSocketTimeout())
+				.setConnectTimeout(config.getConnectTimeout()).build();
 		/*
 		 * 当访问url的schema为http时， 调用明文连接套节工厂来建立连接；
 		 * 当访问url的schema为https时，调用SSL连接套接字工厂来建立连接

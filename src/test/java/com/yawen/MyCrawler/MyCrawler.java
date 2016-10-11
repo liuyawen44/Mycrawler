@@ -22,11 +22,17 @@ public class MyCrawler extends Crawler{
 	public boolean shouldVisit(Page referringPage, CrawlUrl url) {
 	      
 
-		if(url.getUrl().startsWith("https:")||url.getUrl().startsWith("http:"))
-	        
+		if(url.getUrl().contains("qqzssl.com"))
+		{
+			if("联系方式".equals(url.getAnchor()))
+			{
+				return true;
+			}
+		}
+			
 	       
 			
-			return true;
+			
 		return false;
 	    }
 
@@ -37,8 +43,14 @@ public class MyCrawler extends Crawler{
 	@Override
 	    public void visit(Page page) {
 			
-//	        
-	     System.out.println(page.getUrl().getAnchor()+" "+page.getUrl().getUrl());
+		Document document=Jsoup.parse(page.getEntityToContext());
+		System.out.println(document.select("title").first().text());
+		Elements elements=document.getElementsByClass("contactus").select("li");
+        if(elements!=null)
+		for(Element element:elements)
+        {
+      	 System.out.println(element.text());
+        }
 	            
 	           
 	            	
